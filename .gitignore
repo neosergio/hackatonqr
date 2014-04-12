@@ -52,3 +52,19 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Compress
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar
+
+# IDE
+.idea/
+
+# data
+*.sqlite3
+*.csv
+*.sql
+
+# OS X
+.DS_Store
