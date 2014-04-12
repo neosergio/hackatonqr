@@ -1,0 +1,50 @@
+{% extends "proyectos/base.html" %}
+{% load staticfiles %}
+{% block css %}
+	<style>
+		.table-center { margin: 0 auto; }
+		.table-center ul { margin: 0; font-size: 10px; }
+		.Abierto { color: white; background-color: green; }
+		.Cerrado { color: white; background-color: red; }
+	</style>
+{% endblock css %}
+{% block main_content %}
+	<div class="row text-center">
+		<div class="small-12 columns">
+			<h2>Proyectos</h2>
+		</div>
+	</div>
+
+	<div class="row text-center">
+		<div class="small-12 columns">
+			<table class='table-center'>
+				<thead>
+					<tr>
+						<th>Nombre de proyecto</th>
+						<th>Estado</th>
+						<th>Participantes</th>
+						<th>Miembros</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for key, value in projects_summary.items %}
+					<tr>
+						<td><a href="{% url 'proyectos:proyecto' key %}">{{value.name}}</a></td>
+						<td class='{{value.status}}'>{{value.status}}</td>
+						<td>{{value.quantity}}</td>
+						<td>
+							<ul>
+							{% for member in value.members %}
+								<li>{{member.name}}</li>	
+							{% empty %}
+								---
+							{% endfor %}
+							</ul>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock main_content %}

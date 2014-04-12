@@ -1,0 +1,51 @@
+{% extends "proyectos/base.html" %}
+{% load staticfiles %}
+{% block css %}
+	<style>
+		.helptext{ color: blue; }
+	</style>
+{% endblock css %}
+{% block main_content %}
+
+	{# Registration form. #}
+
+	{% if participant_form %}
+		<form method='post'>{% csrf_token %}
+			<div class="row text-center">
+				<div class="small-12 columns">
+					{{participant_form.as_p}}
+					<input  type='submit' class='button round' value='Registrar'>
+					<a class='button alert round' href="/">Cancelar</a>
+				</div>
+			</div>
+		</form>
+	{% endif %}
+
+
+	{# Successfully registered. #}
+	{% if participant %}
+		<div class="row">
+			<div class="small-12 columns text-center">
+				<h2>{{participant.name}} <small>te registraste satisfactoriamente en: </small></h2>
+				<h2><a href="{% url 'proyectos:proyecto' participant.proyecto.id %}">{{participant.proyecto.name}}</a></h2>
+			</div>
+		</div>
+	{% endif %}
+
+	{# Something was wrong. #}
+	{% if message %}
+		<div class="row">
+			<div class="small-12 columns text-center">
+				<h1>{{message}}</h1>
+				<h2>Estas registrado en el proyecto: <a href="{% url 'proyectos:proyecto' participant_registered.proyecto.id %}">{{participant_registered.proyecto.name}}</a></h2>
+			</div>
+		</div>
+	{% endif %}
+
+	<div class="row text-right">
+		<div class="small-12 columns">
+			<a href="/" class='button radius disabled expand'>Ver la lista de proyectos.</a>
+		</div>
+	</div>
+	
+{% endblock %}
