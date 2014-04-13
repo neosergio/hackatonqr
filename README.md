@@ -7,8 +7,8 @@ Developer: Sergio Infante
 Instructions
 ------------
 1. Use requirements.txt with pip
-1. Create the database
-..* Optional: Run import-data.py script if you want to test with csv and sqlite3
+2. Create the database
+  * Optional: Run import-data.py script if you want to test with csv and sqlite3
 
 Note
 ----

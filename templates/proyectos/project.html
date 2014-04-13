@@ -3,6 +3,9 @@
 {% block css %}
 	<style>
 		.table-center { margin: 30px auto; }
+		.table-center caption { font-weight: bold; }
+		.Abierto { background-color: green; color: white; padding: 5px; }
+		.Cerrado { background-color: red; color: white; padding: 5px 100px; }
 	</style>
 {% endblock css %}
 {% block main_content %}
@@ -10,13 +13,14 @@
 		<div class="small-12 columns">
 			<img src="http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl={{current_url}}inscribirse">
 			<h2>{{project.name}} <small>{{project.description}}</small></h2>
+			<h4><span class="{{ project.get_status_display }}">{{project.get_status_display}}</span></h4>
 		</div>
 	</div>
 	
 	<div class="row text-center">
 		<div class="small-12 columns">
-			<h3>Participantes</h3>
 				<table class="table-center">
+					<caption>PARTICIPANTES</caption>
 					<thead>
 						<tr>
 							<th>#</th><th>Nombre</th><th>e-mail</th>

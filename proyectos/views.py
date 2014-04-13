@@ -1,3 +1,4 @@
+#-*- coding:utf-8 -*-
 from django.http import HttpRequest
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
@@ -32,7 +33,7 @@ def project(request, id_proyecto):
 def register(request, id_proyecto):
 	project = get_object_or_404(Proyecto, pk=id_proyecto)
 	participants_per_project = Participante.objects.filter(proyecto__pk=project.id).count()
-	if participants_per_project >= 5:
+	if participants_per_project >= project.max_participants:
 		project.status = 'C'
 		project.save()
 		message = "El proyecto ya tiene los participantes requeridos, elige otro."

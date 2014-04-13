@@ -2,7 +2,8 @@
 {% load staticfiles %}
 {% block css %}
 	<style>
-		.helptext{ color: blue; }
+		.helptext { color: blue; }
+		.errorlist { font-size: 15px; background-color: red; color: white; }
 	</style>
 {% endblock css %}
 {% block main_content %}
@@ -37,7 +38,9 @@
 		<div class="row">
 			<div class="small-12 columns text-center">
 				<h1>{{message}}</h1>
-				<h2>Estas registrado en el proyecto: <a href="{% url 'proyectos:proyecto' participant_registered.proyecto.id %}">{{participant_registered.proyecto.name}}</a></h2>
+				{% if participant_registered %}
+					<h2>Estas registrado en el proyecto: <a href="{% url 'proyectos:proyecto' participant_registered.proyecto.id %}">{{participant_registered.proyecto.name}}</a></h2>
+				{% endif %}
 			</div>
 		</div>
 	{% endif %}
