@@ -1,0 +1,15 @@
+{% extends "admin/base.html" %}
+
+{% block title %}{{ title }} | Hackatrix Lima 2014{% endblock %}
+
+{% block extrastyle %}
+<style>
+	#header { background-color: #000; color: orange; }
+</style>
+{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Hackatrix Lima 2014</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
