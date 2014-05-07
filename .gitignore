@@ -65,6 +65,8 @@ docs/_build/
 *.sqlite3
 *.csv
 *.sql
+*.xls
+*.xlsx
 
 # OS X
 .DS_Store
