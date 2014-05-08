@@ -20,24 +20,26 @@ import_sql_file = open('tmp_import.sql', 'a')
 
 #pass CSV to tmp_import.sql
 counter = 0
-for row in range(0, sheet.nrows):
+for row in range(1, sheet.nrows):
     counter += 1
-    # The Excel file must have these fields, without headers:
+    print "== Record %i ==" % (counter)
+    # The Excel file must have these fields, with headers:
     # name, description, owner_name, technology(optional), category(optional), email(optional)
     # #max_participants(integer), status, url(optional)
-    query = """ insert into proyectos_proyecto values (null,"%s","%s","%s","%s","%s","%s","%s","%s");\n """
     name = sheet.cell(row,0).value
     description = sheet.cell(row,1).value
     owner_name = sheet.cell(row,2).value
     technology = sheet.cell(row,3).value
-    category = sheet.cell(row,4).value
     email = sheet.cell(row,5).value
     max_participants = sheet.cell(row,6).value
     status = sheet.cell(row,7).value
     url = sheet.cell(row,8).value
-    values = (name, description, owner_name, technology, category, email, max_participants, status, url)
-    print values
-    print "== Record %i ==" % (counter)
+    
+    query = 'insert into proyectos_proyecto values (null,"%s","%s","%s","%s","%s",%s);\n'
+    values = (name, description, owner_name, technology, email,max_participants)
+    
+    numero = int(round(max_participants))
+    print query % values
     #import_sql_file.write(query)
 #close the temporally file  
 #import_sql_file.close()
