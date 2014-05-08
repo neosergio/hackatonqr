@@ -30,25 +30,26 @@ for row in range(1, sheet.nrows):
     description = sheet.cell(row,1).value
     owner_name = sheet.cell(row,2).value
     technology = sheet.cell(row,3).value
+    category = sheet.cell(row,4).value
     email = sheet.cell(row,5).value
-    max_participants = sheet.cell(row,6).value
+    max_participants = int(sheet.cell(row,6).value)
     status = sheet.cell(row,7).value
     url = sheet.cell(row,8).value
-    
-    query = 'insert into proyectos_proyecto values (null,"%s","%s","%s","%s","%s",%s);\n'
-    values = (name, description, owner_name, technology, email,max_participants)
-    
-    numero = int(round(max_participants))
-    print query % values
-    #import_sql_file.write(query)
-#close the temporally file  
-#import_sql_file.close()
+    #building the query
+    previous_query = 'insert into proyectos_proyecto values (null,"%s","%s","%s","%s","%s","%s",%s,"%s","%s");\n'
+    values = (name, description, owner_name, technology, category, email, max_participants, status, url)
+    query = (previous_query) % (values)
+    #write the import file, row by row
+    import_sql_file.write(query.encode("UTF-8"))
+
+#close the temporally file
+import_sql_file.close()
 
 #execute the command to import
 print "==== Import insertion queries to the database ===="
-#COMMAND_TO_IMPORT = "sqlite3 db.sqlite3 < tmp_import.sql"
-#os.system(COMMAND_TO_IMPORT)
+COMMAND_TO_IMPORT = "sqlite3 db.sqlite3 < tmp_import.sql"
+os.system(COMMAND_TO_IMPORT)
 
-print "==== Delete the temporally file ===="
 #delete temporally file
-#os.system('rm tmp_import.sql')
+print "==== Delete the temporally file ===="
+os.system('rm tmp_import.sql')
