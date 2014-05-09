@@ -2,11 +2,18 @@
 #-*- coding:utf-8 -*-
 
 #import modules
-import xlrd
 import os
+import sys
+import xlrd
 
-#files to import and temporaly generate sql file
-EXCEL_FILE = 'projects.xlsx'
+#file to import through parameter
+#i.e python import-projects-data.py projects.xlsx
+try:
+    EXCEL_FILE = sys.argv[1]
+except:
+    print "An argument is required"
+    print "Usage: python import-projects-data.py projects.xlsx"
+    sys.exit()
 
 #open Excel file
 print "==== Open Excel file ===="
@@ -15,6 +22,8 @@ sheet = import_file.sheet_by_index(0)
 
 #create and open a temporally file to store sql queries
 print "==== Create a temporally file to store insertion queries ===="
+
+#generate temporaly generate sql file
 os.system('touch tmp_import.sql')
 import_sql_file = open('tmp_import.sql', 'a')
 
