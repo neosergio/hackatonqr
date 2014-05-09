@@ -13,10 +13,26 @@
 		<div class="small-12 columns">
 			<img src="http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl={{current_url}}inscribirse">
 			<h2>{{project.name}} <small>{{project.description}}</small></h2>
+			<p><small>es una idea de: </small>{{project.owner_name}}</p>
 			<h4><span class="{{ project.get_status_display }}">{{project.get_status_display}}</span></h4>
 		</div>
 	</div>
-	
+
+	<div class="row">
+		<div class="small-12 columns">
+			<table class="table-center">
+				<caption>Propuesta tecnológica del proyecto</caption>
+				<tbody>
+					<tr><th>Tecnología</th><td>{{project.technology}}</td></tr>
+					<tr><th>Categoría</th><td>{{project.category}}</td></tr>
+					<tr><th>e-mail del autor de la idea</th><td>{{project.email}}</td></tr>
+					<tr><th>Cantidad máxima de participantes</th><td>{{project.max_participants}}</td></tr>
+					<tr><th>URL del proyecto</th><td><a href="{{project.url}}" target="_blank">{{project.url}}</a></td></tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
 	<div class="row text-center">
 		<div class="small-12 columns">
 				<table class="table-center">
