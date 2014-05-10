@@ -2,29 +2,47 @@
 #-*- coding:utf-8 -*-
 
 #import modules
-import csv
 import os
-import io
+import sys
+import xlrd
 
-#files to import and temporaly generate sql file
-CSV_FILE = 'participants.csv'
+#file to import through parameter
+#i.e python import-projects-data.py participants.xlsx
+try:
+    EXCEL_FILE = sys.argv[1]
+except:
+    print "An argument is required"
+    print "Usage: python import-projects-data.py projects.xlsx"
+    sys.exit()
 
-#open CSV file
-print "==== Read CSV file ===="
-import_file = csv.reader(open(CSV_FILE))
+#open Excel file
+print "==== Open Excel file ===="
+import_file = xlrd.open_workbook(EXCEL_FILE)
+sheet = import_file.sheet_by_index(0)
 
 #create and open a temporally file to store sql queries
 print "==== Create a temporally file to store insertion queries ===="
+
+#generate temporaly generate sql file
 os.system('touch tmp_import.sql')
 import_sql_file = open('tmp_import.sql', 'a')
 
 #pass CSV to tmp_import.sql
 counter = 0
-for row in import_file:
+for row in range(1, sheet.nrows):
     counter += 1
-    query = 'insert into proyectos_participante values (null,null,"%s %s","%s");\n' % (row[0], row[1], row[2])
     print "== Record %i ==" % (counter)
-    import_sql_file.write(query)
+    # The Excel file must have these fields, with headers:
+    # lastname, name, email
+    lastname = sheet.cell(row, 0).value
+    name = sheet.cell(row, 1).value
+    email = sheet.cell(row, 2).value
+    #building the query
+    previous_query = 'insert into proyectos_participante values (null,null,"%s %s","%s");\n'
+    values = (name, lastname, email)
+    query = (previous_query) % values
+    #write the import file, row by row
+    import_sql_file.write(query.encode("UTF-8"))
  
 #close the temporally file  
 import_sql_file.close()
