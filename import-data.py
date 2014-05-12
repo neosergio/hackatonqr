@@ -32,15 +32,23 @@ counter = 0
 for row in range(1, sheet.nrows):
     counter += 1
     print "== Record %i ==" % (counter)
-    # The Excel file must have these fields, with headers:
-    # lastname, name, email
-    lastname = sheet.cell(row, 0).value
-    name = sheet.cell(row, 1).value
-    email = sheet.cell(row, 2).value
-    #building the query
-    previous_query = 'insert into proyectos_participante values (null,null,"%s %s","%s");\n'
-    values = (name, lastname, email)
-    query = (previous_query) % values
+    if (EXCEL_FILE == "staff.xlsx"):
+        # The excel file must have these fields, with headers:
+        # name, email
+        name = sheet.cell(row,0).value
+        email = sheet.cell(row,1).value
+        query = 'insert into proyectos_participante values (null,null,"%s","%s");\n' % (name, email)
+    else:
+        # The Excel file must have these fields, with headers:
+        # lastname, name, email
+        lastname = sheet.cell(row, 0).value
+        name = sheet.cell(row, 1).value
+        email = sheet.cell(row, 2).value
+        #building the query
+        previous_query = 'insert into proyectos_participante values (null,null,"%s %s","%s");\n'
+        values = (name, lastname, email)
+        query = (previous_query) % values
+
     #write the import file, row by row
     import_sql_file.write(query.encode("UTF-8"))
  
