@@ -6,6 +6,7 @@
 		.table-center ul { margin: 0; font-size: 10px; }
 		.Abierto { color: white; background-color: green; }
 		.Cerrado { color: white; background-color: red; }
+        .members-name { text-transform: capitalize; }
 	</style>
 {% endblock css %}
 {% block main_content %}
@@ -34,7 +35,7 @@
 						<td class='{{value.status}}'>{{value.status}}</td>
 						<td>{{value.quantity}}</td>
 						<td>
-							<ul>
+							<ul class="members-name">
 							{% for member in value.members %}
 								<li>{{member.name}}</li>	
 							{% empty %}

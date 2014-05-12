@@ -6,6 +6,7 @@
 		.table-center caption { font-weight: bold; }
 		.Abierto { background-color: green; color: white; padding: 5px; }
 		.Cerrado { background-color: red; color: white; padding: 5px 100px; }
+        .participant-name { text-transform: uppercase; }
 	</style>
 {% endblock css %}
 {% block main_content %}
@@ -23,11 +24,11 @@
 			<table class="table-center">
 				<caption>Propuesta tecnológica del proyecto</caption>
 				<tbody>
-					<tr><th>Tecnología</th><td>{{project.technology}}</td></tr>
-					<tr><th>Categoría</th><td>{{project.category}}</td></tr>
+					<tr><th>Tecnología propuesta</th><td>{{project.technology}}</td></tr>
+					<tr><th>Categoría propuesta</th><td>{{project.category}}</td></tr>
 					<tr><th>e-mail del autor de la idea</th><td>{{project.email}}</td></tr>
-					<tr><th>Cantidad máxima de participantes</th><td>{{project.max_participants}}</td></tr>
-					<tr><th>URL del proyecto</th><td><a href="{{project.url}}" target="_blank">{{project.url}}</a></td></tr>
+					<tr><th>Cantidad máxima de participantes propuesta</th><td>{{project.max_participants}}</td></tr>
+					<tr><th>URL temporal del proyecto</th><td><a href="{{project.url}}" target="_blank">{{project.url}}</a></td></tr>
 				</tbody>
 			</table>
 		</div>
@@ -45,7 +46,7 @@
 					<tbody>
 						{% for participant in participants %}
 						<tr>
-							<td>{{forloop.counter}}</td><td>{{participant.name}}</td><td>{{participant.email}}</td>
+							<td>{{forloop.counter}}</td><td class="participant-name">{{participant.name}}</td><td>{{participant.email}}</td>
 						</tr>
 						{% empty %}
 						<tr>
