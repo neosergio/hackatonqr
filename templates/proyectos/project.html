@@ -12,19 +12,19 @@
 {% block main_content %}
 	<div class="row text-center">
 		<div class="small-12 columns">
-			<img src="http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl={{current_url}}inscribirse">
-			<h2>{{project.name}} <small>{{project.description}}</small></h2>
-			<p><small>es una idea de: </small>{{project.owner_name}}</p>
-			<h4><span class="{{ project.get_status_display }}">{{project.get_status_display}}</span></h4>
+			<img class="print_qr" src="http://chart.apis.google.com/chart?cht=qr&chs=500x500&chl={{current_url}}inscribirse">
+			<h2 class="print_project">{{project.name}} <small>{{project.description}}</small></h2>
+			<p class="not_print"><small>es una idea de: </small>{{project.owner_name}}</p>
+			<h4 class="not_print"><span class="{{ project.get_status_display }}">{{project.get_status_display}}</span></h4>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row not_print">
 		<div class="small-12 columns">
 			<table class="table-center">
 				<caption>Propuesta tecnológica del proyecto</caption>
 				<tbody>
-					<tr><th>Tecnología propuesta</th><td>{{project.technology}}</td></tr>
+					<tr><th>Tecnología propuesta</th><td>{{project.technologyz}}</td></tr>
 					<tr><th>Categoría propuesta</th><td>{{project.category}}</td></tr>
 					<tr><th>e-mail del autor de la idea</th><td>{{project.email}}</td></tr>
 					<tr><th>Cantidad máxima de participantes propuesta</th><td>{{project.max_participants}}</td></tr>
@@ -34,7 +34,7 @@
 		</div>
 	</div>
 
-	<div class="row text-center">
+	<div class="row text-center not_print">
 		<div class="small-12 columns">
 				<table class="table-center">
 					<caption>PARTICIPANTES</caption>
@@ -59,9 +59,9 @@
 	</div>
 	
 
-	<div class="row text-right">
+	<div class="row text-right not_print">
 		<div class="small-12 columns">
-			<a href="{{current_url}}inscribirse" class='button radius disabled expand'>Participar.</a>
+			<a href="{{current_url}}inscribirse" class='button radius disabled expand clickable' style='cursor: pointer;'>Participar.</a>
 		</div>
 	</div>
 {% endblock %}
