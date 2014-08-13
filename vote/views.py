@@ -7,8 +7,6 @@ from vote.models import Candidate
 # Create your views here.
 def index(request):
     done = request.COOKIES.get('already_voted', False)
-    if not done:
-        print "osea falso"
     if done:
         response = redirect('vote:results')
     else:
