@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Votación para Debates - Belatrix</title>
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-
+    <link href="{% static 'css/vote.css' %}" rel="stylesheet">
+    {% block css %}{% endblock css %}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -26,9 +27,11 @@
     {% block main_content %}
     {% endblock main_content %}
     <footer>
-        <div class="row text-center footer">
-            <!-- Coded with love by Sergio Infante -->
-            <div class="col-md-12">Copyright @ 2014 Belatrix Software. All rights reserved.</div>
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Coded with love by Sergio Infante -->
+                <div id="footer-text" class="col-md-12 center-block text-center">Copyright @ 2014 Belatrix Software. All rights reserved.</div>
+            </div>
         </div>
     </footer>
   </body>
