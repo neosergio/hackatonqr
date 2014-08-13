@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             {% for candidate in candidate_list %}
-            <div class="col-md-6 candidate">
+            <div class="col-md-6 candidate-button">
                 <a class="btn btn-lg btn-default" href="{% url 'vote:candidate' candidate.id %}">{{candidate.name}}</a>
             </div>
             {% endfor %}
