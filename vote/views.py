@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from django.shortcuts import redirect
@@ -7,20 +6,36 @@ from vote.models import Candidate
 
 # Create your views here.
 def index(request):
-    candidate_list = Candidate.objects.all()
-    context = {'candidate_list':candidate_list}
-    return render(request, 'vote/index.html', context)
+    done = request.COOKIES.get('already_voted', False)
+    if not done:
+        print "osea falso"
+    if done:
+        response = redirect('vote:results')
+    else:
+        candidate_list = Candidate.objects.all()
+        context = {'candidate_list':candidate_list}
+        response = render(request, 'vote/index.html', context)
+    return response
 
 def vote(request, id_candidate):
-    candidate = get_object_or_404(Candidate, pk=id_candidate)
-    context = {'candidate':candidate}
-    return render(request, 'vote/vote.html', context)
+    done = request.COOKIES.get('already_voted', False)
+    if done:
+        response = redirect('vote:results')
+    else:
+        candidate = get_object_or_404(Candidate, pk=id_candidate)
+        context = {'candidate':candidate}
+        response = render(request, 'vote/vote.html', context)
+    return response
 
 def confirm_vote(request, id_candidate):
-    candidate = get_object_or_404(Candidate, pk=id_candidate)
-    candidate.votes += 1
-    candidate.save()
-    return redirect('vote:results')
+    done = request.COOKIES.get('already_voted', False)
+    response = redirect('vote:results')
+    if not done:
+        candidate = get_object_or_404(Candidate, pk=id_candidate)
+        candidate.votes += 1
+        candidate.save()
+        response.set_cookie(key="already_voted", value=True, max_age=60)
+    return response
 
 def result(request):
     first = Candidate.objects.get(name="Android")
