@@ -32,7 +32,7 @@ def confirm_vote(request, id_candidate):
         candidate = get_object_or_404(Candidate, pk=id_candidate)
         candidate.votes += 1
         candidate.save()
-        response.set_cookie(key="already_voted", value=True, max_age=36000)
+        response.set_cookie(key="already_voted", value=True, max_age=20)
     return response
 
 def result(request):
