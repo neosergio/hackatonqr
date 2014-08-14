@@ -3,14 +3,24 @@
 {% block main_content %}
     <div id="main_content" class="row text-center">
         <div class="row">
-            <div class="col-md-12 question"> Resultados del debate: </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 result-text">
-               <p id="android_results">Android: <span class="results">{{first_percentage|floatformat:2}}%</span></p>
-            </div>
-            <div class="col-md-6 result-text">
-               <p id="ios_results">iOS: <span class="results">{{second_percentage|floatformat:2}}%</span></p>
+            <div class="col-md-12">
+                <div class="result-text">
+                    Android
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="{{first_percentage|floatformat:0}}" aria-valuemin="0" aria-valuemax="100" style="width: {{first_percentage|floatformat:0}}%;">
+                        {{first_percentage|floatformat:2}}%
+                        </div>
+                    </div>
+                </div>
+                <div class="result-text">
+                    iOS
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="{{second_percentage|floatformat:0}}" aria-valuemin="0" aria-valuemax="100" style="width: {{second_percentage|floatformat:0}}%; min-width: 20%">
+                        {{second_percentage|floatformat:2}}%
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
          <div class="row">

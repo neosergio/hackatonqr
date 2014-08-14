@@ -3,12 +3,12 @@
 {% block main_content %}
     <div id="main_content" class="row text-center">
         <div class="row">
-            <div class="col-md-12 question"> ¿Quién crees que gano el debate? </div>
+            <div class="col-md-12 question"><p>¿Quién crees que gano el debate?</p></div>
         </div>
         <div class="row">
             {% for candidate in candidate_list %}
             <div class="col-md-6 candidate-button">
-                <a class="btn btn-lg btn-default" href="{% url 'vote:candidate' candidate.id %}">{{candidate.name}}</a>
+                <p><a class="btn btn-lg btn-default" href="{% url 'vote:candidate' candidate.id %}">{{candidate.name}}</a></p>
             </div>
             {% endfor %}
         </div>

@@ -3,9 +3,6 @@
 {% block main_content %}
     <div id="main_content" class="row text-center">
         <div class="row">
-            <div class="col-md-12 question"> ¿Deseas votar por {{ candidate.name }} como ganador del debate? </div>
-        </div>
-        <div class="row">
             <div class="col-md-12 vote-button">
                 <a class="btn btn-lg btn-default" href="{% url 'vote:confirm' candidate.id %}">Votar por {{candidate.name}}</a><br/>
             </div>
