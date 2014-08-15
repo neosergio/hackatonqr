@@ -8,10 +8,18 @@
         <div class="row">
             {% for candidate in candidate_list %}
             <div class="col-md-6 candidate-button">
-                <p><img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{current_url}}{{candidate.id}}" alt="" class="print_qr"></p>
+                <p><img src="https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl={{current_url}}{{candidate.id}}" alt="" class="print_qr"></p>
                 <p><a class="btn btn-lg btn-default" href="{% url 'vote:candidate' candidate.id %}">{{candidate.name}}</a></p>
             </div>
             {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-6 candidate-url">
+                <p>iOS: <span>http://bit.ly/votoios</span></p>
+            </div>
+            <div class="col-md-6 candidate-url">
+                <p>Android: <span>http://bit.ly/votoandroid</span></p>
+            </div>
         </div>
     </div>
 {% endblock main_content %}
