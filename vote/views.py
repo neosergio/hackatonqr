@@ -10,8 +10,9 @@ def index(request):
     if done:
         response = redirect('vote:results')
     else:
+        current_url = request.build_absolute_uri()
         candidate_list = Candidate.objects.all()
-        context = {'candidate_list':candidate_list}
+        context = {'candidate_list':candidate_list, 'current_url':current_url}
         response = render(request, 'vote/index.html', context)
     return response
 
