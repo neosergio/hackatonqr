@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Coded with love by Sergio Infante -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Votación para Debates - Belatrix</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/vote.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-belatrix" role="navigation">
+        <div class="container-fluid">
+            <div class="nav-header">
+                <div class="navbar-brand navbar-brand-belatrix"><img src="images/belatrix-min.png" alt="Belatrix"></div>
+            </div>
+        </div>
+    </nav>
+   <div id="main_content" class="row text-center">
+        <div class="row">
+            <div class="col-md-12 question"><p>¿Quién crees que ganó el debate?</p></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 candidate-button">
+                <p><img src="https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl={{current_url}}{{candidate.id}}" alt="" class="print_qr"></p>
+                <p><a class="btn btn-lg btn-default" href="ios.html">iOS</a></p>
+            </div>
+            <div class="col-md-6 candidate-button">
+                <p><img src="https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl={{current_url}}{{candidate.id}}" alt="" class="print_qr"></p>
+                <p><a class="btn btn-lg btn-default" href="android.html">Android</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 candidate-url">
+                <p>iOS: <span>http://bit.ly/votoios</span></p>
+            </div>
+            <div class="col-md-6 candidate-url">
+                <p>Android: <span>http://bit.ly/votoandroid</span></p>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
