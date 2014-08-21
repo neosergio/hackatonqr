@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -17,34 +18,34 @@
   </head>
   <body>
     <nav class="navbar navbar-default navbar-belatrix" role="navigation">
-        <div class="container-fluid">
-            <div class="nav-header">
-                <div class="navbar-brand navbar-brand-belatrix"><img src="images/belatrix-min.png" alt="Belatrix"></div>
-            </div>
-        </div>
+		<img src="images/title.png" alt="Android vs IOS" />
     </nav>
    <div id="main_content" class="row text-center">
         <div class="row">
-            <div class="col-md-12 question"><p>¿Quién crees que ganó el debate?</p></div>
+            <div class="col-md-12 question"><h2>¿Quién crees que ganó el debate?</h2></div>
         </div>
         <div class="row">
             <div class="col-md-6 candidate-button">
+            <div class="qr_code">
+            <img class="logo_qr" alt="" src="images/IOS.png">
                 <p><img src="https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl={{current_url}}{{candidate.id}}" alt="" class="print_qr"></p>
-                <p><a class="btn btn-lg btn-default" href="ios.html">iOS</a></p>
-            </div>
-            <div class="col-md-6 candidate-button">
-                <p><img src="https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl={{current_url}}{{candidate.id}}" alt="" class="print_qr"></p>
-                <p><a class="btn btn-lg btn-default" href="android.html">Android</a></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 candidate-url">
+                <p><a class="btn btn-lg btn-default btn-ios" href="ios.html">iOS</a></p>
                 <p>iOS: <span>http://bit.ly/votoios</span></p>
+            </div>    
             </div>
-            <div class="col-md-6 candidate-url">
-                <p>Android: <span>http://bit.ly/votoandroid</span></p>
+            <div class="col-md-6 candidate-button">
+            <div class="qr_code">
+            <img class="logo_qr" alt="" src="images/android.png">
+                <p><img src="https://chart.googleapis.com/chart?cht=qr&chs=400x400&chl={{current_url}}{{candidate.id}}" alt="" class="print_qr"></p>
+                <p><a class="btn btn-lg btn-default btn-android" href="android.html">Android</a></p>
+                                <p>Android: <span>http://bit.ly/votoandroid</span></p>
+			</div>                
             </div>
         </div>
+
+    </div>
+    	<div class="footer">
+    	<a href="http://www.belatrixsf.com/" title="Belatrix Software"><img src="images/logo_bela.png" alt="Belatrix Software"/></a>
     </div>
   </body>
 </html>
